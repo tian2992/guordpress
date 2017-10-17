@@ -13,8 +13,8 @@ This assumes you want to run it in port 8042, behind a reverse HTTP Proxy (nginx
 
 ```bash
 $ git clone https://github.com/tian2992/guordpress.git
-$ docker build -t="wp-docker" .
-$ docker run -d -p 8042:80 wp-docker
+$ docker build -t="guordpress" .
+$ docker run -d -p 8042:80 guordpress
 ```
 
 A volume will be created, containing the Wordpress base dir, you can use this to copy files or extract from.
