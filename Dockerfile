@@ -5,10 +5,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update -y && apt-get install -y curl unzip wget
 
 ENV VOLUME_ROOT /var/www
-ENV DOCUMENT_ROOT {$VOLUME_ROOT}/public
+ENV DOCUMENT_ROOT $VOLUME_ROOT/public
 
 # Install the app
-RUN wget -O wordpress.tar.gz https://wordpress.org/latest.tar.gz && tar -xzvf /wordpress.tar.gz --strip-components=1 --directory ${DOCUMENT_ROOT} &&
+RUN wget -O wordpress.tar.gz https://wordpress.org/latest.tar.gz && tar -xzvf /wordpress.tar.gz --strip-components=1 --directory ${DOCUMENT_ROOT} && rm wordpress.tar.gz
 
 # SQLite sauce
 RUN wget -O sqlite-plugin.zip https://downloads.wordpress.org/plugin/sqlite-integration.1.8.1.zip && unzip sqlite-plugin.zip -d ${DOCUMENT_ROOT}/wp-content/plugins/ && cp ${DOCUMENT_ROOT}/wp-content/plugins/sqlite-integration/db.php ${DOCUMENT_ROOT}/wp-content && rm sqlite-plugin.zip
